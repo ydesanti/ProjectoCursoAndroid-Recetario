@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">ProjectoCursoAndroid-Recetario</string>
+    <string name="app_name">PCA-Recetario</string>
+    <string name="menu_recetas_texto">Recetas</string>
+    <string name="menu_ingredientes_texto">Ingredientes</string>
+    <string name="menu_recordatorios_texto">Recordatorios</string>
+    <string name="menu_buscar_texto">Buscar</string>
 </resources>
