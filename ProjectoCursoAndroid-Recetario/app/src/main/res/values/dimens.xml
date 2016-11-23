@@ -6,4 +6,7 @@
     <dimen name="eight_dp">8dp</dimen>
     <dimen name="twelve_dp">12dp</dimen>
     <dimen name="sixteen_dp">16dp</dimen>
+
+    <dimen name="text_view_padding">8dp</dimen>
+    <dimen name="divider">4dp</dimen>
 </resources>
