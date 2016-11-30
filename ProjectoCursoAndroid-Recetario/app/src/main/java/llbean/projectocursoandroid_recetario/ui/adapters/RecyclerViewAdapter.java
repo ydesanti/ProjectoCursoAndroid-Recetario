@@ -1,15 +1,21 @@
 package llbean.projectocursoandroid_recetario.ui.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import llbean.projectocursoandroid_recetario.R;
 import llbean.projectocursoandroid_recetario.bo.Recetas;
+import llbean.projectocursoandroid_recetario.ui.activities.MainActivity;
+import llbean.projectocursoandroid_recetario.ui.activities.RecipyDetails;
 import llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow;
 
 /**
@@ -41,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mListaRecetas.size();
     }
 
-    class ViewHolderClass extends RecyclerView.ViewHolder {
+    class ViewHolderClass extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         CustomLayoutForRecipiesRow mListaRecetas;
         ImageView chevrom;
@@ -51,6 +57,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             mListaRecetas = (CustomLayoutForRecipiesRow) itemView.findViewById(R.id.customRowView);
             chevrom = (ImageView) itemView.findViewById(R.id.detailsChevron);
+            chevrom.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+            Intent details = new Intent(view.getContext(), RecipyDetails.class);
+            //startActivity(details);
         }
     }
 
