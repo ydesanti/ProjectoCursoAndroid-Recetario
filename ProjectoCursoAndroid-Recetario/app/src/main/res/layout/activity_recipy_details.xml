@@ -10,19 +10,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="llbean.projectocursoandroid_recetario.ui.activities.RecipyDetails">
 
+    <include android:id="@id/toolbar" layout="@layout/toolbar"/>
+
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/details_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Title">
+        android:paddingTop="@dimen/sixteen_dp"
+        android:layout_below="@id/toolbar">
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/recipeTitle"
+            android:theme="@style/H1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            tools:text="Papas Fritas"/>
+            android:text="Papas Fritas"/>
 
         <android.widget.ImageView
             android:layout_width="24dp"

@@ -9,18 +9,20 @@ import android.os.Bundle;
 
 import llbean.projectocursoandroid_recetario.R;
 
-public class RecipyDetails extends Fragment {
+public class RecipyDetails extends BaseActivity {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_recipy_details);
     }
 
     public static Intent makeIntent(Context context) {
         return new Intent(context, RecipyDetails.class);
     }
 
-
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_recipy_details;
+    }
 
 }

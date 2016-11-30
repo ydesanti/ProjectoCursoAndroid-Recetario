@@ -64,7 +64,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void onClick(View view) {
             Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
             Intent details = new Intent(view.getContext(), RecipyDetails.class);
-            //startActivity(details);
+            details.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            view.getContext().getApplicationContext().startActivity(details);
         }
     }
 
