@@ -10,9 +10,9 @@
         style="@style/RecipesItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/custom_green"
         android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@android:color/white"
+        android:background="@color/recipeListBackground"
         android:textStyle="bold"
         tools:text="Papas"/>
 

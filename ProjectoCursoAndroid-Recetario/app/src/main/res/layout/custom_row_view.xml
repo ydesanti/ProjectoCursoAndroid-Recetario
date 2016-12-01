@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:background="@color/recipeListBackground">
 
     <llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow
         android:layout_width="0dp"
@@ -14,6 +15,6 @@
         android:layout_width="24dp"
         android:layout_height="41dp"
         android:id="@+id/detailsChevron"
-        android:src="@drawable/ic_go_to_details_chevron" android:background="@color/custom_green"/>
+        android:src="@drawable/ic_go_to_details_chevron"/>
 </LinearLayout>
 

@@ -22,4 +22,6 @@
     <color name="star_dust">#9E9E9E</color>
     <color name="hoki">#607D8B</color>
     <color name="custom_green">#7EE081</color>
+    <color name="recipeListBackground">#00A896</color>
+    <color name="menuBarBackground">#28666E</color>
 </resources>
