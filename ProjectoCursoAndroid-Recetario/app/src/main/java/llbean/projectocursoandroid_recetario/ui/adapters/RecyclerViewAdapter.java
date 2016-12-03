@@ -1,8 +1,6 @@
 package llbean.projectocursoandroid_recetario.ui.adapters;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +12,6 @@ import java.util.List;
 
 import llbean.projectocursoandroid_recetario.R;
 import llbean.projectocursoandroid_recetario.bo.Recetas;
-import llbean.projectocursoandroid_recetario.ui.activities.MainActivity;
 import llbean.projectocursoandroid_recetario.ui.activities.RecipyDetails;
 import llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow;
 
@@ -25,13 +22,14 @@ import llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolderClass> {
 
     private List<Recetas> mListaRecetas;
+
     public RecyclerViewAdapter(List<Recetas> recetas) {
         this.mListaRecetas = recetas;
     }
 
     @Override
     public ViewHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_view, parent, false);
+       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_view, parent, false);
        return new ViewHolderClass(v);
     }
 
