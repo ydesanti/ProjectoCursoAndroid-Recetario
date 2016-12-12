@@ -2,5 +2,18 @@
 <resources>
     <item name="toolbar" type="id"/>
 
+    <!-- recetas -->
+    <item name="edit_recipe_name" type="id">edit_recipy_name</item>
+    <item name="recipe_img_view" type="id">recipy_img_view</item>
+    <item name="load_img_btn" type="id">load_img_btn</item>
+
+    <item name="edit_ingredient_qty" type="id">edit_ingredient_qty</item>
+    <item name="ingredient_ddl" type="id">ingredient_ddl</item>
+    <item name="measure_ddl" type="id">measure_ddl</item>
+    <item name="edit_ingredients_layout" type="id">edit_ingredients_layout</item>
+    <item name="add_ingredient_btn" type="id">add_ingredient_btn</item>
+    <item name="ingredient_list_layout" type="id">ingredient_list_layout</item>
+    <item name="edit_recipe_steps" type="id">edit_recipy_steps</item>
+    <item name="save_btn" type="id">save_btn</item>
 
 </resources>

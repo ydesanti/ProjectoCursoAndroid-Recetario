@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PCA-Recetario</string>
     <string name="menu_recetas_texto">Recetas</string>
@@ -5,6 +6,15 @@
     <string name="menu_recordatorios_texto">Recordatorios</string>
     <string name="menu_buscar_texto">Buscar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recipe_name">Nombre de la Receta</string>
+    <string name="load_image">Imagen</string>
+
+    <string name="ingredients">Ingredientes</string>
+    <string name="select_ingredient">Seleccionar Ingrediente</string>
+    <string name="select_measure">Cantidad</string>
+
+    <string name="steps">Pasos</string>
+    <string name="add">Agregar</string>
+    <string name="save">Guardar</string>
+
 </resources>

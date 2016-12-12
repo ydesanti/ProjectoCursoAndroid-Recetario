@@ -4,6 +4,7 @@ package llbean.projectocursoandroid_recetario.ui.activities;
  * Created by ydesanti on 11/20/2016.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -41,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_recetas:
-                // TODO
+                startActivity(new Intent(this, EditRecipe.class));
                 break;
             case R.id.menu_ingredientes:
                 // TODO

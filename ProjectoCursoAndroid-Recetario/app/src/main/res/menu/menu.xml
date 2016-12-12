@@ -8,7 +8,7 @@
         app:showAsAction="always" />
 
     <item android:id="@+id/menu_ingredientes"
-        android:title="@string/menu_recetas_texto"
+        android:title="@string/menu_ingredientes_texto"
         android:orderInCategory="200"
         app:showAsAction="ifRoom" />
 

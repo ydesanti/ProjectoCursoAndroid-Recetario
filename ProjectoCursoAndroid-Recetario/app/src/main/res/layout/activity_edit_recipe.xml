@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/recipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="llbean.projectocursoandroid_recetario.ui.activities.EditRecipe">
+
+        <include android:id="@id/toolbar" layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:id="@+id/edit_recipe_layout"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_below="@id/toolbar">
+
+            <!-- Titulo -->
+            <TextView
+                style="@style/RecipeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_name"/>
+
+            <EditText
+                android:id="@id/edit_recipe_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+            <!-- Cargar imagen -->
+            <ImageView
+                android:id="@id/recipe_img_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/load_image"/>
+
+            <Button
+                android:id="@id/load_img_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/load_image"
+                android:onClick="loadImage"/>
+
+            <!-- Ingredientes -->
+            <TextView
+                style="@style/RecipeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredients"/>
+
+            <TableLayout
+                android:id="@id/edit_ingredients_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shrinkColumns="1"
+                android:stretchColumns="0"
+                android:orientation="vertical">
+
+                <TableRow>
+                    <EditText
+                        android:id="@id/edit_ingredient_qty"
+                        android:inputType="numberDecimal" />
+
+                    <Spinner
+                        android:id="@id/measure_ddl"
+                        android:entries="@array/measure_array"
+                        android:prompt="@string/select_measure" />
+                </TableRow>
+            </TableLayout>
+
+            <Spinner
+                android:id="@id/ingredient_ddl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/ingredients_array"
+                android:prompt="@string/select_ingredient" />
+
+            <LinearLayout
+                android:id="@id/ingredient_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <Button
+                android:id="@id/add_ingredient_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                android:onClick="addIngredient"/>
+
+            <!-- Pasos -->
+            <TextView
+                style="@style/RecipeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/steps"/>
+
+            <EditText
+                android:id="@id/edit_recipe_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@id/save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:onClick="saveProduct"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
