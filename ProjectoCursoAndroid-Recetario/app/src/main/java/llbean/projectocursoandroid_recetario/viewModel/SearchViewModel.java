@@ -87,7 +87,7 @@ public class SearchViewModel extends BaseObservable {
             public void onResponse(Call<RecipeFeed> call, Response<RecipeFeed> response) {
                 Log.d(TAG, "success");
                 Log.d(TAG, ">>>>>>>>>>>>>>>>>> Response: "+response.code());
-                                
+
                 mIsLoading = false;
                 if (response.body().getRecetas() != null) {
                     mAdapter.addRecipies(response.body().getRecetas());
@@ -118,7 +118,7 @@ public class SearchViewModel extends BaseObservable {
             int lastVisibleItemCount = layoutManager.findLastVisibleItemPosition();
 
             if (!mIsLoading) {
-                if (total > 0)
+                if (total > 0) {
                     if ((total - 1) == lastVisibleItemCount) {
                         if (mCurrentPage < mTotalPages) {
                             mCurrentPage++;
@@ -126,6 +126,7 @@ public class SearchViewModel extends BaseObservable {
                             requestRecipes();
                         }
                     }
+                }
             }
         }
     };
