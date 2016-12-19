@@ -6,7 +6,6 @@
     <string name="menu_recordatorios_texto">Recordatorios</string>
     <string name="menu_buscar_texto">Buscar</string>
 
-    <string name="recipe_name">Nombre de la Receta</string>
     <string name="load_image">Imagen</string>
 
     <string name="ingredients">Ingredientes</string>
@@ -17,4 +16,8 @@
     <string name="add">Agregar</string>
     <string name="save">Guardar</string>
 
+    <string name="recipe_name">Nombre: %s</string>
+    <string name="recipe_id">ID: %s</string>
+    <string name="recipe_ingredients">Ingredientes: %s</string>
+    <string name="recipe_rank">Social Rank: %s</string>
 </resources>

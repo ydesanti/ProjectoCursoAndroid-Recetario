@@ -5,8 +5,9 @@ package llbean.projectocursoandroid_recetario.util;
  */
 
 public interface Constants {
-    String ENDPOINT = "http://food2fork.com/api/";
 
     int PICK_IMAGE_REQUEST = 1;
 
+    final String SEARCH_ENDPOINT = "http://food2fork.com/api/search";
+    final String DETAILS_ENDPOINT = "http://food2fork.com/api/get";
 }

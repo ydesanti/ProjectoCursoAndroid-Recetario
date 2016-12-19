@@ -11,4 +11,6 @@
     <dimen name="divider">4dp</dimen>
 
     <dimen name="recipe_font_size">18sp</dimen>
+    <dimen name="image_width">120dp</dimen>
+    <dimen name="image_height">200dp</dimen>
 </resources>

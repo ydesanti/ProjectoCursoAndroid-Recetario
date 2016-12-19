@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="llbean.projectocursoandroid_recetario.ui.activities.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
 
+    <data>
+        <variable
+            name="search"
+            type="llbean.projectocursoandroid_recetario.viewModel.SearchViewModel"/>
+    </data>
 
-    <include android:id="@id/toolbar" layout="@layout/toolbar"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listRecetas"
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        tools:context="llbean.projectocursoandroid_recetario.ui.activities.MainActivity">
+
+
+        <include android:id="@id/toolbar" layout="@layout/toolbar"/>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/searchSection"
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@={search.query}"
+                />
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:onClick="@{search.searchRecipesClickListener()}"
+                android:text="@string/menu_buscar_texto"/>
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listRecetas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/searchSection"
+            android:addOnScrollListener="@{search.onScrollListener}"
+            android:scrollbars="vertical"/>
+    </RelativeLayout>
+</layout>

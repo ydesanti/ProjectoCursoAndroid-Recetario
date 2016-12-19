@@ -11,12 +11,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     private static Retrofit sRetrofit;
 
-    public static Retrofit getInstance() {
+    public static Retrofit getSearchInstance() {
 
         if (sRetrofit == null) {
 
             sRetrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.ENDPOINT)
+                    .baseUrl(Constants.SEARCH_ENDPOINT)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return sRetrofit;
+    }
+
+    public static Retrofit getDetailsInstance() {
+
+        if (sRetrofit == null) {
+
+            sRetrofit = new Retrofit.Builder()
+                    .baseUrl(Constants.DETAILS_ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
