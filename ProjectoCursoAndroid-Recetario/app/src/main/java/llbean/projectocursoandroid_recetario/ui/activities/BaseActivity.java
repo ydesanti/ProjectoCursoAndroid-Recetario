@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import com.google.firebase.auth.FirebaseAuth;
 
 import llbean.projectocursoandroid_recetario.R;
 
@@ -58,6 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+    }
 
     @LayoutRes
     protected abstract int getLayoutResource();

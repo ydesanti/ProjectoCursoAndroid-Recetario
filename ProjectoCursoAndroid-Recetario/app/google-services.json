@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "560678478832",
+    "firebase_url": "https://chocomondongodb.firebaseio.com",
+    "project_id": "chocomondongodb",
+    "storage_bucket": "chocomondongodb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560678478832:android:2bdf3b4bab80d79f",
+        "android_client_info": {
+          "package_name": "llbean.projectocursoandroid_recetario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560678478832-ots91ih4r1hmusaa3bqb1lmei6r5nrj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB565uY_hQdlDW--OsdNXEYWxQ_2zffwW0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,6 +13,7 @@
     <item name="edit_ingredients_layout" type="id">edit_ingredients_layout</item>
     <item name="add_ingredient_btn" type="id">add_ingredient_btn</item>
     <item name="ingredient_list_layout" type="id">ingredient_list_layout</item>
+    <item name="ingredient_list" type="id">ingredient_list</item>
     <item name="edit_recipe_steps" type="id">edit_recipy_steps</item>
     <item name="save_btn" type="id">save_btn</item>
 
