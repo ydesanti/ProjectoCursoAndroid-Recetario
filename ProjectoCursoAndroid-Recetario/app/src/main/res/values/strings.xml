@@ -3,18 +3,16 @@
     <string name="app_name">PCA-Recetario</string>
     <string name="menu_recetas_texto">Recetas</string>
     <string name="menu_ingredientes_texto">Ingredientes</string>
-    <string name="menu_recordatorios_texto">Recordatorios</string>
-    <string name="menu_buscar_texto">Buscar</string>
+    <string name="menu_compartir_texto">Compartir</string>
 
     <string name="recipe_name">Nombre de la Receta</string>
     <string name="load_image">Imagen</string>
-
     <string name="ingredients">Ingredientes</string>
     <string name="select_ingredient">Seleccionar Ingrediente</string>
     <string name="select_measure">Cantidad</string>
-
     <string name="steps">Pasos</string>
     <string name="add">Agregar</string>
     <string name="save">Guardar</string>
+    <string name="ingredient_name">Nombre del Ingrediente</string>
 
 </resources>

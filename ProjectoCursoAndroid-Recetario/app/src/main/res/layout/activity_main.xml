@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     tools:context="llbean.projectocursoandroid_recetario.ui.activities.MainActivity">
 
-
     <include android:id="@id/toolbar" layout="@layout/toolbar"/>
 
+    <Button
+        android:id="@+id/refresh_bth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:text="Refrescar"
+        android:onClick="refresh"
+        />
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/listRecetas"
+        android:id="@id/load_repipe_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar" />
+        android:layout_below="@id/refresh_bth" />
 </RelativeLayout>

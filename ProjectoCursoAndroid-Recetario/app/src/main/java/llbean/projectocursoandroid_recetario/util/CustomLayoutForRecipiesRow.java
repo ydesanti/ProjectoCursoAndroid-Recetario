@@ -3,16 +3,11 @@ package llbean.projectocursoandroid_recetario.util;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import llbean.projectocursoandroid_recetario.R;
-import llbean.projectocursoandroid_recetario.bo.Recetas;
-
-/**
- * Created by ydesanti on 11/16/2016.
- */
+import llbean.projectocursoandroid_recetario.bo.Recipe;
 
 public class CustomLayoutForRecipiesRow extends LinearLayout {
     public CustomLayoutForRecipiesRow(Context context) {
@@ -37,9 +32,9 @@ public class CustomLayoutForRecipiesRow extends LinearLayout {
         inflater.inflate(R.layout.default_recipe_row, this, true);
     }
 
-    public void setProductInfo(Recetas receta) {
+    public void setRecipeInfo(Recipe recipe) {
         TextView mRecipeName = (TextView) findViewById(R.id.recipeName);
 
-        mRecipeName.setText(receta.getName());
+        mRecipeName.setText(recipe.getTitle());
     }
 }
