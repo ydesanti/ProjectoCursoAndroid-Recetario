@@ -1,9 +1,5 @@
 package llbean.projectocursoandroid_recetario.bo;
 
-/**
- * Created by Mariano on 12/19/2016.
- */
-
 public class User {
     private String username;
     private String email;

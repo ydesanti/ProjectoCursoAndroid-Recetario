@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,7 +26,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import llbean.projectocursoandroid_recetario.R;
@@ -38,7 +41,6 @@ import llbean.projectocursoandroid_recetario.util.Constants;
  */
 public class EditRecipe extends BaseActivity {
 
-    private static final String REQUIRED = "Requerido";
     private static final String TAG = "EditRecipe";
 
     private DatabaseReference mDatabase;
@@ -57,6 +59,32 @@ public class EditRecipe extends BaseActivity {
         mTitleName = (EditText) findViewById(R.id.edit_recipe_name);
         mSteps = (EditText) findViewById(R.id.edit_recipe_steps);
         mIngredients = (TextView) findViewById(R.id.ingredient_list);
+
+        loadIngredientsDDL();
+    }
+
+    private void loadIngredientsDDL() {
+        mDatabase.child(Constants.INGREDIENTS).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> list = new ArrayList<>();
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    String name = snapshot.child("name").getValue(String.class);
+                    list.add(name);
+                }
+
+                Spinner spinner = (Spinner) findViewById(R.id.ingredient_ddl);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(EditRecipe.this, android.R.layout.simple_spinner_item, list);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadIngredientsDDL:onCancelled", databaseError.toException());
+            }
+        });
     }
 
     @Override
@@ -66,7 +94,7 @@ public class EditRecipe extends BaseActivity {
 
     /**
      * Action to load the image in the form
-     * @param view
+     * @param view The view that was clicked
      */
     public void loadImage(View view) {
         Intent intent = new Intent();
@@ -98,7 +126,7 @@ public class EditRecipe extends BaseActivity {
 
     /**
      * Action to add new ingredients to the list
-     * @param view
+     * @param view The view that was clicked
      */
     public void addIngredient(View view) {
         StringBuilder text = new StringBuilder();
@@ -123,9 +151,9 @@ public class EditRecipe extends BaseActivity {
 
     /**
      * Action to save the data
-     * @param view
+     * @param view The view that was clicked
      */
-    public void saveProduct(View view) {
+    public void saveRecipe(View view) {
         final String title = mTitleName.getText().toString();
         final String steps = mSteps.getText().toString();
         final String ingredients = mIngredients.getText().toString();
@@ -133,50 +161,49 @@ public class EditRecipe extends BaseActivity {
 
         // Title is required
         if (TextUtils.isEmpty(title)) {
-            mTitleName.setError(REQUIRED);
+            mTitleName.setError(Constants.REQUIRED);
             return;
         }
 
         // Disable button so there are no multi-posts
         mSaveBtn.setEnabled(false);
-        Toast.makeText(this, "Guardando...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, Constants.SAVING, Toast.LENGTH_SHORT).show();
 
         final String userId = getUid();
-        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // Get user value
-                        User user = dataSnapshot.getValue(User.class);
+        mDatabase.child(Constants.USERS).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get user value
+                User user = dataSnapshot.getValue(User.class);
 
-                        if (user == null) {
-                            // User is null, error out
-                            Log.e(TAG, "User " + userId + " is unexpectedly null");
-                            Toast.makeText(EditRecipe.this, "Error: no se pudo conectar con el usuario.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // Save recipe
-                            String key = mDatabase.child("recipes").push().getKey();
-                            Recipe recipe = new Recipe(userId, title, image, steps, ingredients);
-                            Map<String, Object> recipeMap = recipe.toMap();
+                if (user == null) {
+                    // User is null, error out
+                    Log.e(TAG, "User " + userId + " is unexpectedly null");
+                    Toast.makeText(EditRecipe.this, Constants.ERROR_USER, Toast.LENGTH_SHORT).show();
+                } else {
+                    // Save recipe
+                    String key = mDatabase.child(Constants.RECIPES).push().getKey();
+                    Recipe recipe = new Recipe(userId, title, image, steps, ingredients);
+                    Map<String, Object> recipeMap = recipe.toMap();
 
-                            Map<String, Object> childUpdates = new HashMap<>();
-                            childUpdates.put("/recipes/" + key, recipeMap);
-                            childUpdates.put("/user-recipes/" + userId + "/" + key, recipeMap);
+                    Map<String, Object> childUpdates = new HashMap<>();
+                    childUpdates.put("/recipes/" + key, recipeMap);
+                    childUpdates.put("/user-recipes/" + userId + "/" + key, recipeMap);
 
-                            mDatabase.updateChildren(childUpdates);
-                        }
+                    mDatabase.updateChildren(childUpdates);
+                }
 
-                        // Finish this Activity, back to the stream
-                        mSaveBtn.setEnabled(true);
-                        finish();
-                    }
+                // Finish this Activity, back to the stream
+                mSaveBtn.setEnabled(true);
+                finish();
+            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.w(TAG, "getUser:onCancelled", databaseError.toException());
-                        mSaveBtn.setEnabled(true);
-                    }
-                });
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "getUser:onCancelled", databaseError.toException());
+                mSaveBtn.setEnabled(true);
+            }
+        });
     }
 
     private String getRecipeImageString() {

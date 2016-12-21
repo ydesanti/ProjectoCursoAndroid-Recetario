@@ -2,7 +2,10 @@
 <resources>
     <item name="toolbar" type="id"/>
 
-    <!-- recetas -->
+    <!-- listar recetas -->
+    <item name="load_repipe_list" type="id">load_repipe_list</item>
+
+    <!-- crear recetas -->
     <item name="edit_recipe_name" type="id">edit_recipy_name</item>
     <item name="recipe_img_view" type="id">recipy_img_view</item>
     <item name="load_img_btn" type="id">load_img_btn</item>
@@ -16,5 +19,9 @@
     <item name="ingredient_list" type="id">ingredient_list</item>
     <item name="edit_recipe_steps" type="id">edit_recipy_steps</item>
     <item name="save_btn" type="id">save_btn</item>
+
+    <!-- crear ingredientes -->
+    <item name="edit_ingredient_name" type="id">edit_ingredient_name</item>
+    <item name="save_ingredient_btn" type="id">save_ingredient_btn</item>
 
 </resources>

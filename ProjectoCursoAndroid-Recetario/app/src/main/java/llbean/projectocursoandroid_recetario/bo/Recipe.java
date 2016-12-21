@@ -1,13 +1,12 @@
 package llbean.projectocursoandroid_recetario.bo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Mariano on 12/19/2016.
- */
-
-public class Recipe {
+public class Recipe implements Parcelable {
     private String userId;
     private String title;
     private String image;
@@ -72,4 +71,37 @@ public class Recipe {
         return map;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.userId);
+        dest.writeString(this.title);
+        dest.writeString(this.image);
+        dest.writeString(this.steps);
+        dest.writeString(this.ingredients);
+    }
+
+    protected Recipe(Parcel in) {
+        this.userId = in.readString();
+        this.title = in.readString();
+        this.image = in.readString();
+        this.steps = in.readString();
+        this.ingredients = in.readString();
+    }
+
+    public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
+        @Override
+        public Recipe createFromParcel(Parcel source) {
+            return new Recipe(source);
+        }
+
+        @Override
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };
 }

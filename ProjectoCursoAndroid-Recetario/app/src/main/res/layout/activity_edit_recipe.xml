@@ -84,7 +84,6 @@
                 android:id="@id/ingredient_ddl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/ingredients_array"
                 android:prompt="@string/select_ingredient" />
 
             <LinearLayout
@@ -126,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/save"
-                android:onClick="saveProduct"/>
+                android:onClick="saveRecipe"/>
         </LinearLayout>
 
     </RelativeLayout>

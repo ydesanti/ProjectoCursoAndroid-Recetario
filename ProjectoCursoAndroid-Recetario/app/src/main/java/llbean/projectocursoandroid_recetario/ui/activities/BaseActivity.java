@@ -1,9 +1,5 @@
 package llbean.projectocursoandroid_recetario.ui.activities;
 
-/**
- * Created by ydesanti on 11/20/2016.
- */
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -14,12 +10,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import llbean.projectocursoandroid_recetario.R;
 
-
 public abstract class BaseActivity extends AppCompatActivity {
-
 
     protected Toolbar mToolbar;
 
@@ -46,21 +41,21 @@ public abstract class BaseActivity extends AppCompatActivity {
                 startActivity(new Intent(this, EditRecipe.class));
                 break;
             case R.id.menu_ingredientes:
-                // TODO
+                startActivity(new Intent(this, EditIngredient.class));
                 break;
-            case R.id.menu_recordatorios:
-                //TODO
+            case R.id.menu_compartir:
+                // TODO startActivity(new Intent(this, ShareRecipe.class));
                 break;
-            case R.id.menu_buscar:
-                //TODO
-                break;
-
         }
         return true;
     }
 
     public String getUid() {
-        return FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            return user.getUid();
+        }
+        return "";
     }
 
     @LayoutRes

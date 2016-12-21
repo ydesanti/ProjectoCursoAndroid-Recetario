@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import llbean.projectocursoandroid_recetario.R;
 import llbean.projectocursoandroid_recetario.bo.User;
+import llbean.projectocursoandroid_recetario.util.Constants;
 
 public class LogInActivity extends BaseActivity {
 
@@ -73,7 +74,7 @@ public class LogInActivity extends BaseActivity {
     private void onAuthSuccess(FirebaseUser fuser) {
         // Write new user
         User user = new User(fuser.getEmail(), fuser.getEmail());
-        mDatabase.child("users").child(fuser.getUid()).setValue(user);
+        mDatabase.child(Constants.USERS).child(fuser.getUid()).setValue(user);
 
         // Go to MainActivity
         startActivity(new Intent(LogInActivity.this, MainActivity.class));
