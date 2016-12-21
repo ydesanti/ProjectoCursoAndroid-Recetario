@@ -43,9 +43,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.menu_ingredientes:
                 startActivity(new Intent(this, EditIngredient.class));
                 break;
-            case R.id.menu_compartir:
-                // TODO startActivity(new Intent(this, ShareRecipe.class));
-                break;
         }
         return true;
     }

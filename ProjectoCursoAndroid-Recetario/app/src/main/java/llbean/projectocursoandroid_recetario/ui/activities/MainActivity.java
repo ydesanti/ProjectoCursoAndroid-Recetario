@@ -24,6 +24,7 @@ import llbean.projectocursoandroid_recetario.util.Constants;
 public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity {
      * Carga la lista de recetas en el recycler view
      */
     private void loadRecipes() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.load_repipe_list);
+        recyclerView = (RecyclerView) findViewById(R.id.load_repipe_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
@@ -70,7 +71,6 @@ public class MainActivity extends BaseActivity {
 
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(list);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
     }
 
     public void refresh(View view) {

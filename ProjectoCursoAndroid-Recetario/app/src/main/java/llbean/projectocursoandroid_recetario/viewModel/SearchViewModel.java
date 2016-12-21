@@ -38,7 +38,7 @@ public class SearchViewModel extends BaseObservable {
 
 
     public SearchViewModel(Context context, RecyclerView recyclerView) {
-        mAdapter = new RecyclerViewAdapter(context);
+       // mAdapter = new RecyclerViewAdapter(context);
         recyclerView.setAdapter(mAdapter);
         mCurrentPage = 1;
     }
@@ -63,7 +63,7 @@ public class SearchViewModel extends BaseObservable {
 
     public void setQuery(String query) {
         mQuery = query;
-        notifyPropertyChanged(BR.search);
+      //  notifyPropertyChanged(BR.search);
 
     }
 
@@ -74,7 +74,7 @@ public class SearchViewModel extends BaseObservable {
         else
             mSearchCriteria = "Chicken";
 
-        mAdapter.reset();
+    //    mAdapter.reset();
         requestRecipes();
     }
 
@@ -90,7 +90,7 @@ public class SearchViewModel extends BaseObservable {
 
                 mIsLoading = false;
                 if (response.body().getRecetas() != null) {
-                    mAdapter.addRecipies(response.body().getRecetas());
+          //          mAdapter.addRecipies(response.body().getRecetas());
                     mTotalPages = response.body().getTotalResults();
                 }
             }
