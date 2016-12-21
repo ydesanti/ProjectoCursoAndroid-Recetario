@@ -6,61 +6,55 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import llbean.projectocursoandroid_recetario.R;
-import llbean.projectocursoandroid_recetario.bo.Recetas;
+import llbean.projectocursoandroid_recetario.bo.Recipe;
 import llbean.projectocursoandroid_recetario.ui.activities.RecipyDetails;
 import llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow;
 
-/**
- * Created by ydesanti on 11/22/2016.
- */
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.RecipeHolderClass> {
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolderClass> {
+    private List<Recipe> mRecipeList;
 
-    private List<Recetas> mListaRecetas;
-
-    public RecyclerViewAdapter(List<Recetas> recetas) {
-        this.mListaRecetas = recetas;
+    public RecyclerViewAdapter(List<Recipe> list) {
+        this.mRecipeList = list;
     }
 
     @Override
-    public ViewHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
-       View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_view, parent, false);
-       return new ViewHolderClass(v);
+    public RecipeHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_view, parent, false);
+        return new RecipeHolderClass(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderClass holder, int position) {
-        Recetas receta = mListaRecetas.get(position);
-        holder.mListaRecetas.setProductInfo(receta);
-        holder.chevrom.setImageResource(receta.getChevron());
+    public void onBindViewHolder(RecipeHolderClass holder, int position) {
+        Recipe recipe = mRecipeList.get(position);
+
+        holder.mRecipeRow.setRecipeInfo(recipe);
     }
 
     @Override
     public int getItemCount() {
-        return mListaRecetas.size();
+        return mRecipeList.size();
     }
 
-    class ViewHolderClass extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class RecipeHolderClass extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        CustomLayoutForRecipiesRow mListaRecetas;
+        CustomLayoutForRecipiesRow mRecipeRow;
         ImageView chevrom;
 
-        public ViewHolderClass(View itemView) {
+        RecipeHolderClass(View itemView) {
             super(itemView);
 
-            mListaRecetas = (CustomLayoutForRecipiesRow) itemView.findViewById(R.id.customRowView);
+            mRecipeRow = (CustomLayoutForRecipiesRow) itemView.findViewById(R.id.customRowView);
             chevrom = (ImageView) itemView.findViewById(R.id.detailsChevron);
             chevrom.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
             Intent details = new Intent(view.getContext(), RecipyDetails.class);
             details.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             view.getContext().getApplicationContext().startActivity(details);

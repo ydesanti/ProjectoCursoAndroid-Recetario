@@ -5,22 +5,13 @@
     <item android:id="@+id/menu_recetas"
         android:title="@string/menu_recetas_texto"
         android:orderInCategory="100"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_restaurant"
+        app:showAsAction="ifRoom" />
 
     <item android:id="@+id/menu_ingredientes"
         android:title="@string/menu_ingredientes_texto"
         android:orderInCategory="200"
+        android:icon="@drawable/ic_ingredients"
         app:showAsAction="ifRoom" />
-
-    <item android:id="@+id/menu_recordatorios"
-        android:title="@string/menu_recordatorios_texto"
-        android:orderInCategory="300"
-        app:showAsAction="ifRoom" />
-
-    <item android:id="@+id/menu_buscar"
-        android:icon="@drawable/ic_search_icon"
-        android:title="@string/menu_buscar_texto"
-        android:orderInCategory="400"
-        app:showAsAction="always" />
 
 </menu>
