@@ -12,6 +12,7 @@ import llbean.projectocursoandroid_recetario.R;
 import llbean.projectocursoandroid_recetario.ui.adapters.DividerDecorator;
 import llbean.projectocursoandroid_recetario.ui.adapters.RecyclerViewAdapter;
 import llbean.projectocursoandroid_recetario.util.CargarListaRecetas;
+import llbean.projectocursoandroid_recetario.viewModel.SearchViewModel;
 
 public class MainActivity extends BaseActivity {
 
@@ -19,17 +20,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.listRecetas);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(CargarListaRecetas.crearListaRecetas());
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        int dividerHeight = getResources().getDimensionPixelSize(R.dimen.divider);
-        DividerDecorator dividerDecorator = new DividerDecorator(dividerHeight);
-        recyclerView.addItemDecoration(dividerDecorator);
-
-        recyclerView.setAdapter(adapter);
+        new SearchViewModel(getApplicationContext(), (RecyclerView) findViewById(R.id.listRecetas)).searchRecipes();
     }
 
     @Override

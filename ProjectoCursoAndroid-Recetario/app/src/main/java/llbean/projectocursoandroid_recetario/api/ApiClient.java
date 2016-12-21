@@ -16,19 +16,7 @@ public class ApiClient {
         if (sRetrofit == null) {
 
             sRetrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.SEARCH_ENDPOINT)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return sRetrofit;
-    }
-
-    public static Retrofit getDetailsInstance() {
-
-        if (sRetrofit == null) {
-
-            sRetrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.DETAILS_ENDPOINT)
+                    .baseUrl(Constants.ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

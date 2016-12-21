@@ -1,14 +1,10 @@
 package llbean.projectocursoandroid_recetario.ui.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +12,6 @@ import java.util.List;
 import llbean.projectocursoandroid_recetario.R;
 import llbean.projectocursoandroid_recetario.databinding.CustomRowViewBinding;
 import llbean.projectocursoandroid_recetario.models.Recetas;
-import llbean.projectocursoandroid_recetario.ui.activities.RecipyDetails;
-import llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow;
 import llbean.projectocursoandroid_recetario.viewModel.RecipeViewModel;
 
 /**
@@ -55,10 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolderClass onCreateViewHolder(ViewGroup parent, int viewType) {
-      /* View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_row_view, parent, false);
-       return new ViewHolderClass(v);*/
-
-        CustomRowViewBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+       CustomRowViewBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 R.layout.custom_row_view, parent, false);
 
         return new ViewHolderClass(binding);
@@ -70,9 +61,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         CustomRowViewBinding binding = holder.mBinding;
         binding.setRecipe(new RecipeViewModel(mContext, receta));
-
-        /*holder.mListaRecetas.setProductInfo(receta);
-        holder.chevrom.setImageResource(receta.getChevron());*/
     }
 
     @Override
@@ -91,25 +79,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             super(binding.customRowView);
             mBinding = binding;
         }
-
-        /*CustomLayoutForRecipiesRow mListaRecetas;
-        ImageView chevrom;
-
-        public ViewHolderClass(View itemView) {
-            super(itemView);
-
-            mListaRecetas = (CustomLayoutForRecipiesRow) itemView.findViewById(R.id.customRowView);
-            chevrom = (ImageView) itemView.findViewById(R.id.detailsChevron);
-            chevrom.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
-            Intent details = new Intent(view.getContext(), RecipyDetails.class);
-            details.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            view.getContext().getApplicationContext().startActivity(details);
-        }*/
     }
 
 }

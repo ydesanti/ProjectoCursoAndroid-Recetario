@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import llbean.projectocursoandroid_recetario.BR;
 import llbean.projectocursoandroid_recetario.models.RecipeFeed;
@@ -48,6 +49,7 @@ public class SearchViewModel extends BaseObservable {
 
             @Override
             public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Click", Toast.LENGTH_SHORT).show();
                 searchRecipes();
             }
         };
@@ -65,20 +67,27 @@ public class SearchViewModel extends BaseObservable {
 
     }
 
-    private void searchRecipes() {
-        mSearchCriteria = getQuery();
+    public void searchRecipes() {
+
+        if(getQuery() != null)
+            mSearchCriteria = getQuery();
+        else
+            mSearchCriteria = "Chicken";
+
         mAdapter.reset();
         requestRecipes();
     }
 
 
     private void requestRecipes() {
-        Call<RecipeFeed> call = MyApplication.getInstance().getAPISeach().getImages(mSearchCriteria, mCurrentPage);
+        Call<RecipeFeed> call = new MyApplication().getInstance().getAPISeach().getRecipies(mSearchCriteria, mCurrentPage);
         Log.d(TAG, call.request().toString());
         call.enqueue(new Callback<RecipeFeed>() {
             @Override
             public void onResponse(Call<RecipeFeed> call, Response<RecipeFeed> response) {
                 Log.d(TAG, "success");
+                Log.d(TAG, ">>>>>>>>>>>>>>>>>> Response: "+response.code());
+                                
                 mIsLoading = false;
                 if (response.body().getRecetas() != null) {
                     mAdapter.addRecipies(response.body().getRecetas());
@@ -92,7 +101,6 @@ public class SearchViewModel extends BaseObservable {
             }
         });
     }
-
 
     public RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
         @Override

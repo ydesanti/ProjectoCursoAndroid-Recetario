@@ -10,6 +10,12 @@ import retrofit2.http.Query;
  */
 
 public interface ApiInterface {
-    @GET("?key=c5384cd76b3e2f2b065990d27bd62bd2")
-    Call<RecipeFeed> getImages(@Query("s") String query, @Query("page") int page);
+    @GET("api/search?key=c5384cd76b3e2f2b065990d27bd62bd2")
+    Call<RecipeFeed> getRecipies(@Query("q") String query, @Query("page") int page);
+
+    @GET("api/search?key=c5384cd76b3e2f2b065990d27bd62bd2")
+    Call<RecipeFeed> getAllRecipies();
+
+    @GET("api/get?key=c5384cd76b3e2f2b065990d27bd62bd2")
+    Call<RecipeFeed> getDetails();
 }

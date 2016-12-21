@@ -20,15 +20,17 @@ public class MyApplication extends Application {
         super.onCreate();
         sInstance = this;
         mApiSearchInterface = ApiClient.getSearchInstance().create(ApiInterface.class);
-        mApiDetailsInterface = ApiClient.getDetailsInstance().create(ApiInterface.class);
+    }
+
+    public MyApplication() {
+        if (sInstance == null) {
+            sInstance = this;
+            mApiSearchInterface = ApiClient.getSearchInstance().create(ApiInterface.class);
+        }
     }
 
     public ApiInterface getAPISeach() {
         return mApiSearchInterface;
-    }
-
-    public ApiInterface getAPIDetails() {
-        return mApiDetailsInterface;
     }
 
     public static MyApplication getInstance() {

@@ -19,8 +19,8 @@ public class RecipeFeed {
         return mRecetas;
     }
 
-    public void setRecetas(List<Recetas> movies) {
-        mRecetas = movies;
+    public void setRecetas(List<Recetas> recetas) {
+        mRecetas = recetas;
     }
 
     public int getTotalResults() {

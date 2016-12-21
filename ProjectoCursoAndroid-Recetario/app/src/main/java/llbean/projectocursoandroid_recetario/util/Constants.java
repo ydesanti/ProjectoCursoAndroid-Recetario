@@ -8,6 +8,5 @@ public interface Constants {
 
     int PICK_IMAGE_REQUEST = 1;
 
-    final String SEARCH_ENDPOINT = "http://food2fork.com/api/search";
-    final String DETAILS_ENDPOINT = "http://food2fork.com/api/get";
+    final String ENDPOINT = "http://food2fork.com/";
 }
