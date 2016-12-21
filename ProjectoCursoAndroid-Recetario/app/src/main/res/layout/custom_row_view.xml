@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@color/recipeListBackground">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <llbean.projectocursoandroid_recetario.util.CustomLayoutForRecipiesRow
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:id="@+id/customRowView"
-        android:layout_height="wrap_content" />
+    <data>
+        <variable
+            name="recipe"
+            type="llbean.projectocursoandroid_recetario.viewModel.RecipeViewModel"/>
+    </data>
 
-    <android.widget.ImageView
-        android:layout_width="24dp"
-        android:layout_height="41dp"
-        android:id="@+id/detailsChevron"
-        android:src="@drawable/ic_go_to_details_chevron"/>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/recipeListBackground">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/customRowView"
+            android:layout_height="wrap_content"
+            android:text="@{recipe.title}"
+            android:tag="binding_1" />
+
+        <android.widget.ImageView
+            android:layout_width="24dp"
+            android:layout_height="41dp"
+            android:id="@+id/detailsChevron"
+            android:src="@drawable/ic_go_to_details_chevron"/>
+    </LinearLayout>
+</layout>

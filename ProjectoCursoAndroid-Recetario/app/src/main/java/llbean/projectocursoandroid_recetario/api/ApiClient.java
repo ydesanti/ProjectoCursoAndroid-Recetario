@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     private static Retrofit sRetrofit;
 
-    public static Retrofit getInstance() {
+    public static Retrofit getSearchInstance() {
 
         if (sRetrofit == null) {
 
